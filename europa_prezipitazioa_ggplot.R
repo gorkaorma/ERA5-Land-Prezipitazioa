@@ -4,7 +4,7 @@ library(rnaturalearth)
 library(terra)
 library(sf)
 
-# Set working directory
+# Set working directory --
 setwd("~/R /ERA5 Land Prezipitazioa")
 
 # Leer datos del archivo ERA5-2025-prez.nc
@@ -69,7 +69,13 @@ p <- ggplot() +
   coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE) +
   theme_void() +
   labs(title = "Prezipitazioa Europan 2025", fill = "mm") +
-  theme(legend.position = "bottom") +
+  theme(legend.position = "bottom",
+        legend.margin = margin(t = 40, r = 0, b = 40, l = 0),
+        legend.key.width = unit(2, "cm"),
+        plot.title = element_text(hjust = 0.5, size = 18, face = "bold", 
+                                  margin = margin(t = 30, b = 40)),
+        strip.text = element_text(size = 10, margin = margin(t = 10, b = 5))
+        ) +
   facet_wrap(~ Month, ncol = 3)
 
 # Guardar plot
