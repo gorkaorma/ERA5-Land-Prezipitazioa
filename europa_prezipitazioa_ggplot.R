@@ -82,8 +82,8 @@ p <- ggplot() +
 ggsave(
   filename = "precipitacion_eu_2025.png",  # nombre del archivo
   plot = p,                                   # plot a guardar
-  width = 16,                                 # ancho en pulgadas
-  height = 12,                                # alto en pulgadas
+  width = 10,                                 # ancho en pulgadas
+  height = 14,                                # alto en pulgadas
   dpi = 300                                   # resolución (para imprimir/publicar)
 )
   
