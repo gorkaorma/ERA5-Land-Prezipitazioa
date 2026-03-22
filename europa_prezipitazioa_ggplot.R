@@ -26,11 +26,12 @@ months <- c(
 colnames(nc_df) <- c("x", "y", months)
 
 # Crear paleta de colores
-my_palette <- colorRampPalette(c("white", "lightblue", "darkblue"))
+my_palette <- colorRampPalette(c("white", "#ffffd9","#edf8b1", "#c8e9b4", "#7fcdbb",
+                                 "#41b6c4", "#1b91c0", "#225ea8","#0d2c84"))
 cols <- my_palette(100)   # 100 colores
 
 # Define ranges for breaks
-breaks_vals <- seq(0, 14, by = 2)
+breaks_vals <- seq(0, 10, by = 2)
 
 # Add coastlines using rnaturalearth
 coast <- ne_coastline(scale = "medium", returnclass = "sf")
@@ -64,7 +65,7 @@ nc_long$Month <- factor(nc_long$Month, levels = months)
 p <- ggplot() +
   geom_raster(data = nc_long, aes(x = x, y = y, fill = Precipitation)) +
   geom_sf(data = coast_europe, fill = NA, color = "black", linewidth = 0.2) +
-  scale_fill_gradientn(colors = cols, breaks = breaks_vals, limits = c(0,14)) +
+  scale_fill_gradientn(colors = cols, breaks = breaks_vals, limits = c(0,10), oob = scales::squish) +
   coord_sf(xlim = c(xmin, xmax), ylim = c(ymin, ymax), expand = FALSE) +
   theme_void() +
   labs(title = "Prezipitazioa Europan 2025", fill = "mm") +
